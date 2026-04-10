@@ -74,16 +74,66 @@ body > header > * {
     justify-content: left;
 }
 
+
 #newChat {
     flex-grow: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    height: 44px;
+    padding: 0 12px;
+
+    border: 1px solid var(--cinza-3);
+    border-radius: 8px;
+
+    background-color: transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+
+    position: relative;
 }
 
-#newChat::before {
-    content: "+";
-    padding: 15px;
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--cinza-6);
+
+#newChat img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+
+#newChat:hover {
+    background-color: var(--cinza-5);
+    border-color: var(--cinza-4);
+}
+
+
+#newChat:active {
+    transform: scale(0.97);
+}
+
+#newChat::after {
+    content: "Novo chat";
+    position: absolute;
+    left: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2em;
+
+    padding: 5px 8px;
+    border-radius: 4px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+
+    white-space: nowrap;
+}
+
+#newChat:hover::after {
+    opacity: 1;
 }
 
 button#toggleSidebar {
