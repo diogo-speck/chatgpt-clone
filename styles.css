@@ -10,19 +10,17 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 10px;
-    font-family: 'Open Sans', sans-serif;
+    font: 10px 'Open Sans', sans-serif;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
-*,a,button,p,h1,h2,h3,h4,h5,h6 {
-    font-size: inherit;
-    font-family: inherit;
+* {
     margin: 0;
     padding: 0;
     color: #fff;
+    font: inherit;
 }
 
 a {
@@ -30,36 +28,55 @@ a {
 }
 
 body {
-    background-color: var(--cinza-1);
     display: flex;
+    background: var(--cinza-1);
 }
 
-body > header {
-    height: 100vh;
+header {
     width: 20vw;
-    background-color: var(--cinza-2);
+    height: 100vh;
+    background: var(--cinza-2);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
-button {
-    background-color: transparent;
+main {
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header > * {
+    margin: 8px;
+}
+
+.button,
+#toggleSidebar,
+#newChat {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 6px;
+    gap: 10px;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--cinza-3);
+    border-radius: 8px;
+    background: transparent;
     cursor: pointer;
+    transition: 0.2s;
 }
 
-body > main {
-    height: 100vh;
-    width: 80vw;
+.button:hover,
+#toggleSidebar:hover,
+#newChat:hover {
+    background: var(--cinza-5);
+    border-color: var(--cinza-4);
 }
 
-body > header > * {
-    margin: 8px;
+.button:active,
+#toggleSidebar:active,
+#newChat:active {
+    transform: scale(0.97);
 }
 
 #buttonMenu {
@@ -67,48 +84,13 @@ body > header > * {
     gap: 10px;
 }
 
-#buttonMenu > button {
-    border: solid 1px var(--cinza-3);
-    height: 44px;
-    min-width: 44px;
-    justify-content: left;
-}
-
-
 #newChat {
     flex-grow: 2;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    height: 44px;
-    padding: 0 12px;
-
-    border: 1px solid var(--cinza-3);
-    border-radius: 8px;
-
-    background-color: transparent;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-
     position: relative;
 }
 
-
 #newChat img {
     width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
-
-#newChat:hover {
-    background-color: var(--cinza-5);
-    border-color: var(--cinza-4);
-}
-
-
-#newChat:active {
-    transform: scale(0.97);
 }
 
 #newChat::after {
@@ -117,136 +99,83 @@ body > header > * {
     left: 60px;
     top: 50%;
     transform: translateY(-50%);
-
-    background-color: #000;
-    color: #fff;
-    font-size: 1.2em;
-
+    background: #000;
     padding: 5px 8px;
     border-radius: 4px;
-
+    font-size: 1.2em;
     opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-
-    white-space: nowrap;
+    transition: 0.2s;
 }
 
 #newChat:hover::after {
     opacity: 1;
 }
 
-button#toggleSidebar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+#toggleSidebar {
     width: 44px;
-    height: 44px;
-
-    border: 1px solid var(--cinza-3);
-    border-radius: 8px;
-
-    background-color: transparent;
-    cursor: pointer;
-
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    justify-content: center;
 }
 
 #chatMenu {
-    flex-grow: 2;
-    overflow-x: hidden;
+    flex-grow: 1;
     overflow-y: auto;
-    margin-right: 0;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
-#chatMenu::-webkit-scrollbar {
-    width: 8px;
-}
-
-#chatMenu::-webkit-scrollbar-thumb {
-    background-color: var(--cinza-6);
-    border-radius: 4px;
-}
-
-#chatMenu > section {
-    margin-top: 10px;
-}
-
-#chatMenu > section > * {
-    padding-left: 10px;
-    margin-left: 15px;
-}
-
-#chatMenu > section:first-child {
-    margin-top: 0;
-}
-
-#chatMenu > section > h2 {
+#chatMenu h2 {
     color: var(--cinza-4);
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 10px;
 }
 
-.button {
+#chatMenu a {
+    margin-left: 10px;
+}
+
+#bottomMenu {
     display: flex;
-    max-height: 3em;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    position: relative;
-}
-
-.button::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "";
-    width: 100%;
-    height: 100%;
-    box-shadow: inset -10px 0px 10px -5px #202123;
-}
-
-.button::before {
-    color: var(--cinza-6);
-    padding-right: 15px;
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-}
-
-
-
-#upgrade::before {
-    content: "|";
-}
-
-.button:hover {
-    background-color: var(--cinza-5);
+    flex-direction: column;
+    gap: 8px;
 }
 
 #user {
-    width: 100%;
-    min-height: 50px;
-    justify-content: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-#user > img {
-    height: auto;
-    margin-right: 10px;
+#user:hover {
+    background: var(--cinza-5);
 }
 
-#user > #username {
+#user img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+#username {
     font-weight: bold;
 }
 
-/* ÁREA DO CHAT */
+#upgrade {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--cinza-3);
+}
+
+#upgrade:hover {
+    background: var(--cinza-5);
+}
+
 #chatArea {
-    height: 500px;
+    flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
     display: flex;
@@ -254,7 +183,6 @@ button#toggleSidebar {
     gap: 10px;
 }
 
-/* MENSAGENS */
 .message {
     max-width: 70%;
     padding: 10px 15px;
@@ -262,42 +190,34 @@ button#toggleSidebar {
     font-size: 1.4em;
 }
 
-/* usuário */
 .user {
     align-self: flex-end;
-    background-color: #444654;
+    background: #444654;
 }
 
-/* bot */
 .bot {
     align-self: flex-start;
-    background-color: #202123;
+    background: var(--cinza-2);
 }
 
-/* FORM */
 #chatForm {
-    height: 70px;
     display: flex;
     padding: 10px;
     gap: 10px;
     border-top: 1px solid var(--cinza-3);
 }
 
-/* INPUT */
 #chatInput {
     flex-grow: 1;
     border-radius: 8px;
     border: none;
     padding: 10px;
     font-size: 1.4em;
-    outline: none;
     color: #000;
 }
 
-/* BOTÃO */
 #chatForm button {
     width: 50px;
     border-radius: 8px;
-    background-color: var(--cinza-5);
-    color: white;
+    background: var(--cinza-5);
 }
