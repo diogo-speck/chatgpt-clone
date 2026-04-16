@@ -137,11 +137,20 @@ body > header > * {
 }
 
 button#toggleSidebar {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    color: var(--cinza-6);
-    padding: 15px;
-    font-size: 2em;
-    font-weight: bold;
+
+    width: 44px;
+    height: 44px;
+
+    border: 1px solid var(--cinza-3);
+    border-radius: 8px;
+
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
 
 #chatMenu {
@@ -167,7 +176,7 @@ button#toggleSidebar {
 
 #chatMenu > section > * {
     padding-left: 10px;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 #chatMenu > section:first-child {
@@ -210,9 +219,7 @@ button#toggleSidebar {
     display: block;
 }
 
-#chatMenu > section > a::before {
-    content: "X";
-}
+
 
 #upgrade::before {
     content: "|";
@@ -235,4 +242,62 @@ button#toggleSidebar {
 
 #user > #username {
     font-weight: bold;
+}
+
+/* ÁREA DO CHAT */
+#chatArea {
+    height: 500px;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* MENSAGENS */
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.4em;
+}
+
+/* usuário */
+.user {
+    align-self: flex-end;
+    background-color: #444654;
+}
+
+/* bot */
+.bot {
+    align-self: flex-start;
+    background-color: #202123;
+}
+
+/* FORM */
+#chatForm {
+    height: 70px;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    border-top: 1px solid var(--cinza-3);
+}
+
+/* INPUT */
+#chatInput {
+    flex-grow: 1;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    font-size: 1.4em;
+    outline: none;
+    color: #000;
+}
+
+/* BOTÃO */
+#chatForm button {
+    width: 50px;
+    border-radius: 8px;
+    background-color: var(--cinza-5);
+    color: white;
 }

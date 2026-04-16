@@ -13,10 +13,12 @@
 <body>
     <header>
         <section id="buttonMenu">
-            <a id="newChat" href="../index.html">
-                <img src="../chatgpt-clone/images/open-ai-icon.png" alt="Ícone OpenAI">
-            </a>
-            <button id="toggleSidebar"></button>
+            <a id="newChat" href="../index.html">  
+                <img src="images/open-ai-icon.png" alt="Ícone OpenAI">
+            </a>    
+            <button id="toggleSidebar" aria-label="Barra Lateral">
+                ☰ 
+            </button>
         </section>
         <section id="topo">
 
@@ -40,13 +42,19 @@
         </section>
         <hr>
         <section>
-            <a class="button" id="upgrade" href="">Upgrade to Plus</a>
             <button class="button" id="user">
-                <img src="user.webp" alt="">
+                <img src="images/user.webp" alt="">
                 <p id="username">Dio_</p>
             </button>
+            <a class="button" id="upgrade" href="">Resgatar Oferta</a>
         </section>
     </header>
-    <main></main>
+    <main>
+            <div id="chatArea"></div>
+                <form id="chatForm">
+                    <input type="text" id="chatInput" placeholder="Enviar mensagem..." autocomplete="off">
+                    <button type="submit">➤</button>
+                </form>
+    </main>
 </body>
 </html>
